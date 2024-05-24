@@ -23,7 +23,6 @@ import org.springframework.stereotype.Service;
  * @see
  *
  */
-@Slf4j
 @Service("userRegisterService")
 public class EgovUserRegisterServiceImpl implements EgovUserRegisterService {
 
@@ -35,25 +34,16 @@ public class EgovUserRegisterServiceImpl implements EgovUserRegisterService {
 	 */
 	public Integer countId(LoginVO vo) throws Exception {
 		
-		return loginDAO.countId(LoginVO vo);
+		return loginDAO.countId(vo);
 	}
 	
 	/**
 	 * 회원가입
+	 * @return 
 	 */
-	public LoginVO userRegister(LoginVO vo) throws Exception {
+	public void userRegister(LoginVO vo) throws Exception {
 
-		// 1. 이름, 이메일주소가 DB와 일치하는 사용자 ID를 조회한다.
-		LoginVO loginVO = loginDAO.searchId(vo);
-
-		// 2. 결과를 리턴한다.
-		if (loginVO != null && !loginVO.getId().equals("")) {
-			return loginVO;
-		} else {
-			loginVO = new LoginVO();
-		}
-
-		return loginVO;
+		loginDAO.userRegister(vo);
 	}
 
 

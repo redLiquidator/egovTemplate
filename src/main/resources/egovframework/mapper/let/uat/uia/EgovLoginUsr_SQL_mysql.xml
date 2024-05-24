@@ -47,11 +47,43 @@
 	</select>
 	
 	<!-- 아이디 존재 여부 -->
-	<select id="countId" resultMap="Integer">
-            SELECT COUNT(*) AS count
+	<select id="countId" resultType="Integer">
+            SELECT COUNT(*)
               FROM LETTNEMPLYRINFO
              WHERE EMPLYR_ID = #{id}
 	</select>
+	
+	<insert id="userRegister">
+			INSERT INTO LETTNEMPLYRINFO
+			VALUES
+			(#{id}
+			,'ORGNZT_0000000000000'
+			,'관리자'
+			,#{password}
+			,NULL
+			,NULL
+			,'F'
+			,NULL
+			,NULL
+			,'관리자 주소'
+			,1
+			,1
+			,1
+			,NULL
+			,NULL
+			,NULL
+			,NULL
+			,NULL
+			,NULL
+			,NULL
+			,NULL
+			,'GROUP_00000000000000'
+			,'00000000'
+			,'P'
+			,'USRCNFRM_00000000000'
+			,NULL
+			,'2011-08-02 21:01:59');
+	</insert>
 	
 	<!-- 인증서 로그인
 	<select id="actionCrtfctLogin" resultMap="login">

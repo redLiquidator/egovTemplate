@@ -18,8 +18,8 @@ public interface EgovUserRegisterService {
 	public Integer countId(LoginVO vo) throws Exception;
 
 	/**
-	 * 회원가입
+	 * 회원등록
 	 */
-	public LoginVO userRegister(LoginVO vo) throws Exception;
+	public void userRegister(LoginVO vo) throws Exception;
 
 }
