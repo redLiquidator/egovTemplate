@@ -256,6 +256,7 @@ public class EgovBBSManageApiController {
 		
 		boardVO.setBbsId(bbsId);
 		boardVO.setNttId(Long.parseLong(nttId));
+		System.out.println(boardVO.getBbsId()+"++++++++++"+boardVO.getNttId());
 
 		// 조회수 증가 여부 지정
 		boardVO.setPlusCount(true);
