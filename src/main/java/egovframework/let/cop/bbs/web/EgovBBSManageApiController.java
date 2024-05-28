@@ -37,6 +37,7 @@ import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSAttributeManageService;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
+import egovframework.let.cop.bbs.service.impl.EgovBBSAttributeManageServiceImpl;
 import egovframework.let.utl.sim.service.EgovFileScrty;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -48,6 +49,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 게시물 관리를 위한 컨트롤러 클래스
@@ -67,6 +69,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  *
  *  </pre>
  */
+@Slf4j
 @RestController
 @Tag(name="EgovBBSManageApiController",description = "게시물 관리")
 public class EgovBBSManageApiController {
@@ -135,6 +138,7 @@ public class EgovBBSManageApiController {
 			@Parameter(name = "bbsId", description = "게시판 Id", in = ParameterIn.PATH, example="BBSMSTR_AAAAAAAAAAAA")
 			@PathVariable("bbsId") String bbsId)
 		throws Exception {
+		log.debug(bbsId);
 		ResultVO resultVO = new ResultVO();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
@@ -250,13 +254,14 @@ public class EgovBBSManageApiController {
 			@PathVariable("nttId") String nttId,
 			@Parameter(hidden = true) @AuthenticationPrincipal LoginVO user)
 		throws Exception {
+		log.debug("게시물 상세 조회 controller starts");
 
 		ResultVO resultVO = new ResultVO();
 		BoardVO boardVO = new BoardVO();
 		
 		boardVO.setBbsId(bbsId);
 		boardVO.setNttId(Long.parseLong(nttId));
-		System.out.println(boardVO.getBbsId()+"++++++++++"+boardVO.getNttId());
+		log.debug(boardVO.getBbsId()+"++++++++++"+boardVO.getNttId());
 
 		// 조회수 증가 여부 지정
 		boardVO.setPlusCount(true);

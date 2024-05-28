@@ -121,7 +121,7 @@
  
 	<select id="selectBBSMasterInf" parameterType="egovframework.let.cop.bbs.service.BoardMaster" resultMap="boardMasterDetail">
 		
-			SELECT 
+			SELECT DISTINCT
 				a.BBS_ID, a.BBS_TY_CODE, b.CODE_NM as BBS_TY_CODE_NM, a.BBS_INTRCN, 
 				a.BBS_ATTRB_CODE, c.CODE_NM as BBS_ATTRB_CODE_NM, a.BBS_NM, 
 				a.TMPLAT_ID, a.FILE_ATCH_POSBL_AT, a.ATCH_POSBL_FILE_NUMBER,
