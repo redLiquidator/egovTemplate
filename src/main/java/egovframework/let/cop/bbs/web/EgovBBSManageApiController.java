@@ -1,9 +1,7 @@
 package egovframework.let.cop.bbs.web;
 
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -254,7 +252,8 @@ public class EgovBBSManageApiController {
 			@PathVariable("nttId") String nttId,
 			@Parameter(hidden = true) @AuthenticationPrincipal LoginVO user)
 		throws Exception {
-		log.debug("게시물 상세 조회 controller starts");
+		int i=0;
+		log.debug("게시물 상세 조회 controller starts"+ System.currentTimeMillis());
 
 		ResultVO resultVO = new ResultVO();
 		BoardVO boardVO = new BoardVO();
